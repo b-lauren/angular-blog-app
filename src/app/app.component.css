@@ -1,0 +1,43 @@
+html {
+  font-family: "Poppins", sans-serif;
+}
+
+.main-banner {
+  background-color: #5636b3;
+  color: #fff;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 45px;
+  margin-bottom: -6px;
+}
+
+h1,
+.about {
+  padding: 20px 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.about {
+  opacity: 0.9;
+  font-weight: 300;
+}
+
+.apricot-button {
+  background-color: #f3a55e;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 200px;
+  width: 240px;
+  height: 48px;
+  text-align: center;
+}
+
+.apricot-button:hover {
+  text-decoration: none;
+}
