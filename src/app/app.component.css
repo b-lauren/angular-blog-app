@@ -41,3 +41,10 @@ h1,
 .apricot-button:hover {
   text-decoration: none;
 }
+
+/* Delete soon */
+
+.main-section {
+  background-color: #f6f8fa;
+  height: 600px;
+}

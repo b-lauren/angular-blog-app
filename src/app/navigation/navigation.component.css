@@ -1,5 +1,35 @@
+.navigation-menu {
+  border-bottom: 1px solid #dbd8df;
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ul {
+  list-style: none;
+  margin-bottom: 0;
+}
+
+li {
+  display: inline-block;
+  padding: 6px;
+  font-weight: 500;
+  border: 1px solid #5636b3;
+  margin-right: 16px;
+  border-radius: 8px;
+}
+
+a {
+  text-decoration: none;
+  color: #5636b3;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
 .active {
-  background-color: #5636b3;
-  width: 60px;
-  color: #fff;
+  border: 1px dashed #5636b3;
 }
