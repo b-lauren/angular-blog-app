@@ -8,6 +8,7 @@ import { ArticlesComponent } from './articles/articles.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,12 @@ import { HttpClientModule } from '@angular/common/http';
     ContactusComponent,
     NavigationComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
