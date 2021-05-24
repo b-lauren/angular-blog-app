@@ -14,6 +14,8 @@ export class ArticlesComponent implements OnInit {
     text: new FormControl(),
   });
 
+  resultMessage: string = '';
+
   constructor(public art: ArticleService) {} //DI for service class
 
   ngOnInit(): void {}
@@ -22,6 +24,13 @@ export class ArticlesComponent implements OnInit {
     //console.log('Event Fired');
     let article = this.articleRef.value;
     //console.log(article);
-    this.art.storeArticleDetails(article);
+    this.art.storeArticleDetails(article).subscribe(
+      (result) => {
+        this.resultMessage = 'Article stored correctly';
+      },
+      (error) => {
+        this.resultMessage = "Aricle didn't store - try entering a unique ID";
+      }
+    );
   }
 }
