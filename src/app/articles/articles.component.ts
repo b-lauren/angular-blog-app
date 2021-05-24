@@ -17,6 +17,8 @@ export class ArticlesComponent implements OnInit {
 
   resultMessage: string = '';
   articles?: Array<Article>; //stores JSON values retrieved from file
+  idVar: boolean = false;
+  buttonValue: string = 'Save';
 
   constructor(public art: ArticleService) {} //DI for service class
 
@@ -27,16 +29,34 @@ export class ArticlesComponent implements OnInit {
   }
 
   storeArticle() {
-    //console.log('Event Fired');
     let article = this.articleRef.value;
-    //console.log(article);
     this.art.storeArticleDetails(article).subscribe(
       (result) => {
         this.resultMessage = 'Article stored correctly';
+        //new info gets saved
+        this.art
+          .retrieveArticleDetails()
+          .subscribe((result) => (this.articles = result));
       },
       (error) => {
         this.resultMessage = "Aricle didn't store - try entering a unique ID";
       }
     );
+  }
+
+  deleteArticle(id: any) {
+    //console.log('Delete called' + id);
+    this.art.deleteArticleRecord(id).subscribe((result) => {
+      this.art
+        .retrieveArticleDetails()
+        .subscribe((result) => (this.articles = result));
+    });
+  }
+
+  editArticle(article: any) {
+    console.log(article);
+    this.articleRef.setValue(article);
+    this.idVar = true;
+    this.buttonValue = 'Update';
   }
 }

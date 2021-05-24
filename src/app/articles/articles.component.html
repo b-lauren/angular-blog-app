@@ -4,13 +4,18 @@
 <div>
   <form [formGroup]="articleRef">
     <label>Article Id</label> <br />
-    <input type="text" formControlName="id" /> <br />
+    <input type="text" formControlName="id" [readonly]="idVar" /> <br />
     <label>Article Title</label> <br />
     <input type="text" formControlName="title" /> <br />
     <label>Article Content</label> <br />
     <input type="text" formControlName="text" /> <br />
-    <input type="submit" value="Store Article" (click)="storeArticle()" />
-    <input type="reset" value="reset" />
+    <input
+      type="submit"
+      [value]="buttonValue"
+      class="btn btn-info"
+      (click)="storeArticle()"
+    />
+    <input type="reset" value="Reset" class="btn btn-dark" />
   </form>
   <br />
   {{ resultMessage }}
@@ -21,7 +26,18 @@
       <span>{{ article.id }}</span>
       <h5>{{ article.title }}</h5>
       <p>{{ article.text }}</p>
-      <p></p>
+      <input
+        type="button"
+        value="Delete"
+        class="btn btn-danger"
+        (click)="deleteArticle(article.id)"
+      />
+      <input
+        type="button"
+        value="Edit"
+        class="btn btn-dark"
+        (click)="editArticle(article)"
+      />
     </div>
   </div>
 </div>

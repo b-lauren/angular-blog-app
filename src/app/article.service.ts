@@ -23,4 +23,8 @@ export class ArticleService {
   retrieveArticleDetails(): Observable<Article[]> {
     return this.http.get<Article[]>('http://localhost:3000/articles');
   }
+
+  deleteArticleRecord(id: any): Observable<Article> {
+    return this.http.delete<Article>('http://localhost:3000/articles/' + id);
+  }
 }
