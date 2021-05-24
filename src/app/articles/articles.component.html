@@ -14,4 +14,14 @@
   </form>
   <br />
   {{ resultMessage }}
+  <br />
+  <hr />
+  <div>
+    <div *ngFor="let article of articles">
+      <span>{{ article.id }}</span>
+      <h5>{{ article.title }}</h5>
+      <p>{{ article.text }}</p>
+      <p></p>
+    </div>
+  </div>
 </div>

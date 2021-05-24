@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Article } from '../article.model';
 import { ArticleService } from '../article.service';
 
 @Component({
@@ -15,10 +16,15 @@ export class ArticlesComponent implements OnInit {
   });
 
   resultMessage: string = '';
+  articles?: Array<Article>; //stores JSON values retrieved from file
 
   constructor(public art: ArticleService) {} //DI for service class
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.art
+      .retrieveArticleDetails()
+      .subscribe((result) => (this.articles = result));
+  }
 
   storeArticle() {
     //console.log('Event Fired');
