@@ -29,19 +29,39 @@ export class ArticlesComponent implements OnInit {
   }
 
   storeArticle() {
-    let article = this.articleRef.value;
-    this.art.storeArticleDetails(article).subscribe(
-      (result) => {
-        this.resultMessage = 'Article stored correctly';
-        //new info gets saved
-        this.art
-          .retrieveArticleDetails()
-          .subscribe((result) => (this.articles = result));
-      },
-      (error) => {
-        this.resultMessage = "Aricle didn't store - try entering a unique ID";
-      }
-    );
+    if (this.buttonValue == 'Save') {
+      let article = this.articleRef.value;
+      this.art.storeArticleDetails(article).subscribe(
+        (result) => {
+          this.resultMessage = 'Article stored correctly';
+          //new info gets saved
+          this.art
+            .retrieveArticleDetails()
+            .subscribe((result) => (this.articles = result));
+        },
+        (error) => {
+          this.resultMessage = "Aricle didn't store - try entering a unique ID";
+        }
+      );
+    } else {
+      //console.log('Please update the record');
+      let article = this.articleRef.value;
+      this.art.editArticleDetails(article).subscribe(
+        (result) => {
+          this.resultMessage = 'Article updated successfully';
+          //new info gets saved
+          this.art
+            .retrieveArticleDetails()
+            .subscribe((result) => (this.articles = result));
+          this.idVar = false;
+          this.buttonValue = 'Save';
+        },
+        (error) => {
+          this.resultMessage = "Aricle didn't update";
+        }
+      );
+    }
+    this.articleRef.reset();
   }
 
   deleteArticle(id: any) {
@@ -54,7 +74,7 @@ export class ArticlesComponent implements OnInit {
   }
 
   editArticle(article: any) {
-    console.log(article);
+    //console.log(article);
     this.articleRef.setValue(article);
     this.idVar = true;
     this.buttonValue = 'Update';

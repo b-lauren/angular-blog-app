@@ -27,4 +27,11 @@ export class ArticleService {
   deleteArticleRecord(id: any): Observable<Article> {
     return this.http.delete<Article>('http://localhost:3000/articles/' + id);
   }
+
+  editArticleDetails(article: any): Observable<Article> {
+    return this.http.put<Article>(
+      'http://localhost:3000/articles/' + article.id,
+      article
+    );
+  }
 }
