@@ -1,41 +1,43 @@
-<div>
-  <h2>Add an Article!</h2>
-</div>
-<div>
-  <form [formGroup]="articleRef">
-    <label>Article Id</label> <br />
-    <input type="text" formControlName="id" [readonly]="idVar" /> <br />
-    <label>Article Title</label> <br />
-    <input type="text" formControlName="title" /> <br />
-    <label>Article Content</label> <br />
-    <input type="text" formControlName="text" /> <br />
-    <input
-      type="submit"
-      [value]="buttonValue"
-      class="btn btn-info"
-      (click)="storeArticle()"
-    />
-    <input type="reset" value="Reset" class="btn btn-dark" />
-  </form>
-  <br />
-  {{ resultMessage }}
-  <br />
+<div class="articles-container">
+  <div class="article-heading">
+    <h2>Add an Article!</h2>
+  </div>
+  <div class="new-article-form">
+    <form [formGroup]="articleRef">
+      <label>Article Id</label> <br />
+      <input type="text" formControlName="id" [readonly]="idVar" /> <br />
+      <label>Article Title</label> <br />
+      <input type="text" formControlName="title" /> <br />
+      <label>Article Content</label> <br />
+      <input type="text" formControlName="text" /> <br />
+      <input
+        type="submit"
+        [value]="buttonValue"
+        class="btn btn-info m-2"
+        (click)="storeArticle()"
+      />
+      <input type="reset" value="Reset" class="btn btn-dark m-2" />
+    </form>
+    <br />
+    {{ resultMessage }}
+    <br />
+  </div>
   <hr />
-  <div>
-    <div *ngFor="let article of articles">
-      <span>{{ article.id }}</span>
+  <div class="articles-index">
+    <div class="single-article" *ngFor="let article of articles">
+      <span class="my-5">{{ article.id }}</span>
       <h5>{{ article.title }}</h5>
       <p>{{ article.text }}</p>
       <input
         type="button"
         value="Delete"
-        class="btn btn-danger"
+        class="btn btn-danger m-2"
         (click)="deleteArticle(article.id)"
       />
       <input
         type="button"
         value="Edit"
-        class="btn btn-dark"
+        class="btn btn-dark m-2"
         (click)="editArticle(article)"
       />
     </div>
