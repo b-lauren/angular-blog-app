@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ArticleService } from '../article.service';
 
 @Component({
   selector: 'app-articles',
@@ -13,7 +14,14 @@ export class ArticlesComponent implements OnInit {
     text: new FormControl(),
   });
 
-  constructor() {}
+  constructor(public art: ArticleService) {} //DI for service class
 
   ngOnInit(): void {}
+
+  storeArticle() {
+    //console.log('Event Fired');
+    let article = this.articleRef.value;
+    //console.log(article);
+    this.art.storeArticleDetails(article);
+  }
 }

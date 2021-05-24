@@ -2,14 +2,14 @@
   <h2>Add an Article!</h2>
 </div>
 <div>
-  <form>
-    <label>Article Id</label>
-    <input type="text" /> <br />
-    <label>Article Title</label>
-    <input type="text" /> <br />
-    <label>Article Content</label>
-    <input type="text" /> <br />
-    <input type="submit" value="Store Article" />
+  <form [formGroup]="articleRef">
+    <label>Article Id</label> <br />
+    <input type="text" formControlName="id" /> <br />
+    <label>Article Title</label> <br />
+    <input type="text" formControlName="title" /> <br />
+    <label>Article Content</label> <br />
+    <input type="text" formControlName="text" /> <br />
+    <input type="submit" value="Store Article" (click)="storeArticle()" />
     <input type="reset" value="reset" />
   </form>
 </div>
